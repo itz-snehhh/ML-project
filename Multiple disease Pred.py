@@ -13,14 +13,14 @@ from streamlit_option_menu import option_menu
 # Loading the saved models
 diabetes_model = pickle.load(open("C:/Users/acer/Downloads/Multidisease prediction/diabetes_model.sav", 'rb'))
 heart_disease_model = pickle.load(open("C:/Users/acer/Downloads/Multidisease prediction/heart_model.sav", 'rb'))
-breast_cancer_model = pickle.load(open("C:/Users/acer/Downloads/Multidisease prediction/breast_cancer.sav", 'rb'))
+# breast_cancer_model = pickle.load(open("C:/Users/acer/Downloads/Multidisease prediction/breast_cancer.sav", 'rb'))
 parkinsons_model = pickle.load(open("C:/Users/acer/Downloads/Multidisease prediction/parkinsons_model.sav", 'rb'))
 
 # Sidebar for navigation
 with st.sidebar:
     selected = option_menu(
         'Multiple Disease Prediction System using ML',
-        ['Diabetes Prediction', 'Heart Disease Prediction', 'Breast Cancer Prediction','Parkinsons Prediction'],
+        ['Diabetes Prediction', 'Heart Disease Prediction','Parkinsons Prediction'],
         icons=['hospital', 'heart', 'activity','person-fill'],
         default_index=0
     )
@@ -138,43 +138,43 @@ if selected == 'Heart Disease Prediction':
     st.success(heart_diagnosis)
 
 # Breast Cancer Prediction Page
-if selected == 'Breast Cancer Prediction':
+# if selected == 'Breast Cancer Prediction':
 
-    # page title
-    st.title('Breast Cancer Prediction using ML')
+#     # page title
+#     st.title('Breast Cancer Prediction using ML')
 
-    col1, col2, col3 = st.columns(3)
+#     col1, col2, col3 = st.columns(3)
 
-    with col1:
-        mean_radius = st.text_input('Mean Radius')
+#     with col1:
+#         mean_radius = st.text_input('Mean Radius')
 
-    with col2:
-        mean_texture = st.text_input('Mean Texture')
+#     with col2:
+#         mean_texture = st.text_input('Mean Texture')
 
-    with col3:
-        mean_perimeter = st.text_input('Mean Perimeter')
+#     with col3:
+#         mean_perimeter = st.text_input('Mean Perimeter')
 
-    with col1:
-        mean_area = st.text_input('Mean Area')
+#     with col1:
+#         mean_area = st.text_input('Mean Area')
 
-    with col2:
-        mean_smoothness = st.text_input('Mean Smoothness')
+#     with col2:
+#         mean_smoothness = st.text_input('Mean Smoothness')
 
-    # code for Prediction
-    breast_cancer_diagnosis = ''
+#     # code for Prediction
+#     breast_cancer_diagnosis = ''
 
-    # creating a button for Prediction
-    if st.button('Breast Cancer Result'):
-        try:
-            breast_cancer_prediction = breast_cancer_model.predict([[float(mean_radius), float(mean_texture), float(mean_perimeter), float(mean_area), float(mean_smoothness)]])
-            if breast_cancer_prediction[0] == 1:
-                breast_cancer_diagnosis = 'The breast cancer is Malignant'
-            else:
-                breast_cancer_diagnosis = 'The breast cancer is Benign'
-        except ValueError:
-            breast_cancer_diagnosis = 'Please enter valid numeric values for all fields'
+#     # creating a button for Prediction
+#     if st.button('Breast Cancer Result'):
+#         try:
+#             breast_cancer_prediction = breast_cancer_model.predict([[float(mean_radius), float(mean_texture), float(mean_perimeter), float(mean_area), float(mean_smoothness)]])
+#             if breast_cancer_prediction[0] == 1:
+#                 breast_cancer_diagnosis = 'The breast cancer is Malignant'
+#             else:
+#                 breast_cancer_diagnosis = 'The breast cancer is Benign'
+#         except ValueError:
+#             breast_cancer_diagnosis = 'Please enter valid numeric values for all fields'
 
-    st.success(breast_cancer_diagnosis)
+#     st.success(breast_cancer_diagnosis)
     
     
     
